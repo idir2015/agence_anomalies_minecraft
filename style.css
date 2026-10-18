@@ -1,0 +1,371 @@
+/* ==========================================================================
+   1. CHARGEMENT DE LA POLICE LOCALE (TOUT EN HAUT)
+   ========================================================================== */
+@font-face {
+    font-family: 'Creepster';
+    src: url('Creepster-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* On applique la police Arial à toute la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #121212; /* Un fond noir très sombre */
+  color: #e0e0e0;            /* Du texte blanc/gris clair pour que ce soit lisible */
+  padding: 20px;
+  line-height: 1.6;          /* Aligne bien le texte pour que ce soit agréable à lire */
+}
+
+/* La classe pour votre texte flippant (Maintenant active partout !) */
+.texte-etrange {
+    font-family: 'Creepster', Arial, sans-serif !important;
+    font-size: 2rem;
+    color: #FF3333;
+}
+@keyframes clignotement {
+    0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff3333; }
+    50% { opacity: 0.3; text-shadow: none; }
+}
+.cligne {
+    animation: clignotement 2s infinite;
+}
+
+/* On colore les titres principaux pour les faire ressortir */
+h1, h2, h3 {
+  color: #ff4a4a;            /* Un rouge mystérieux pour les titres */
+}
+
+/* On donne un petit style aux listes à puces */
+ul {
+  background-color: #1a1a1a; /* Un fond un peu plus clair pour encadrer la liste */
+  padding: 15px 35px;
+  border-left: 4px solid #ff4a4a; /* Une petite barre rouge sur le côté */
+  border-radius: 5px;
+}
+
+/* ==========================================================================
+   INTERACTION ENQUÊTEUR : EFFET DE GLITCH AU SURVOL (HOVER EFFECT)
+   ========================================================================== */
+
+/* On applique l'effet de tremblement aux titres et aux liens de l'Agence au survol */
+h1:hover, h2:hover, .titl-link:hover, .retour-link:hover, .dossier-titre:hover {
+    animation: tremblement-glitch 0.3s linear infinite !important;
+    text-shadow: 3px 0px 0px #8a2be2, -3px 0px 0px #ff5722 !important; /* Lueur violette et orange décalée */
+    color: #ffffff !important; /* Le texte devient blanc pur pour simuler un flash électrique */
+    cursor: pointer;
+}
+
+/* L'animation mathématique qui fait sauter le texte de gauche à droite très vite */
+@keyframes tremblement-glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 1px);
+    }
+    40% {
+        transform: translate(-2px, -1px);
+    }
+    60% {
+        transform: translate(2px, 1px);
+    }
+    80% {
+        transform: translate(2px, -1px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+/* ==========================================================================
+   CURSEURS PERSONNALISÉS TERMINAL ET MINI-MAIN PIXELISÉE (A.A.M)
+   ========================================================================== */
+
+/* 1. Curseur par défaut sur TOUTE la page : Viseur rétro */
+html, body {
+    cursor: crosshair !important;
+}
+h3,
+h2:hover {
+    cursor: crosshair !important;
+ 
+}
+
+/* 2. Au survol des boutons, des liens et du tableau : Ta main pixelisée violette */
+a, 
+button, 
+input, 
+.titl-link, 
+.retour-link, 
+.aam-table tbody tr, 
+th, 
+h1:hover {
+    /* On utilise l'URL de ton image locale. Le "auto" à la fin est une sécurité 
+       si l'image met du temps à charger pour le navigateur. */
+    cursor: url('cursor2.webp'), pointer !important; 
+}
+
+
+
+
+
+.important {
+ color: #FF333;
+ font-family: cursive;
+}
+.titl-link {
+  color: #ff4a4a;
+  text-decoration: none;
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #630c06;
+  color: #ff4a4a;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.retour-link {
+  color: #00d5ff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 9px 16px;
+  background-color: #00d5ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  
+}
+.gros-bandeau {
+  position: sticky;             
+  top: 0;                       
+  z-index: 1000;                
+  
+  /* Ajoute l'image de fond uniquement dans le bandeau */
+  background-image: url('https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/05/Impulse_Command_Block_%28back_texture%29_JE4_BE2.png/revision/latest?cb=20210211133510'); 
+  background-repeat: repeat;    /* Répète la texture si elle est petite */
+  background-position: center;  /* Centre l'image */
+  
+  color: #ffffff;               
+  padding: 10px 5px;           
+  text-align: center;           
+  
+  box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.3); 
+}
+.bandera{
+  font-size: 1.0rem;
+  margin: 0;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px #000000; /* Ombre pour que le titre ressorte bien sur l'image */
+  font-size: 50.5px;
+}
+.logo-aam {
+  width: 4.8rem;           /* Taille adaptée pour ton titre de 50.5px */
+  height: auto;          /* Conserve les proportions */
+  vertical-align: middle;
+}
+.title-link {
+  color: #ff4a4a;
+  text-decoration: none;
+}
+.temoignage {
+    margin: 30px 0;
+    padding: 20px 25px;
+    background-color: #1a1a1a;
+    border-left: 5px solid #ff4a4a;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    font-style: italic;
+}
+
+.temoignage p {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+}
+
+.temoignage footer {
+    color: #999;
+    font-size: 14px;
+    font-style: normal;
+}
+```css
+/* ===== PAGE ALVIN13 : DOSSIER 013 ===== */
+
+.alvin13 {
+    font-family: "Courier New", monospace;
+}
+
+/* Titre principal du dossier */
+
+.alvin13 .dossier-titre {
+    text-align: center;
+    color: #ff4a4a;
+    font-size: 38px;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px #8b0000;
+    margin: 35px auto;
+}
+
+/* Avertissement sur la fiction */
+
+.alvin13 .warning {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: #2a0909;
+    border: 1px solid #ff4a4a;
+    color: #ff7777;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* Sections du dossier */
+
+.alvin13 section {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-left: 4px solid #8b0000;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.alvin13 h2 {
+    color: #ff4a4a;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+}
+
+.alvin13 h3 {
+    color: #d9d9d9;
+}
+
+/* Captures d'écran */
+
+.alvin13 img.capture {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    margin: 20px auto 10px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.15);
+}
+
+/* Légendes sous les captures */
+
+.alvin13 .legende {
+    text-align: center;
+    color: #999;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Messages inquiétants */
+
+.alvin13 blockquote {
+    margin: 25px auto;
+    padding: 20px;
+    background-color: #250909;
+    border-left: 4px solid #ff3333;
+    color: #ff5555;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Détails importants */
+
+.alvin13 .indice {
+    color: #ff5555;
+    font-weight: bold;
+}
+
+/* Conclusion */
+
+.alvin13 .conclusion {
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 20px;
+    background-color: #202020;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+/* Adaptation aux téléphones */
+
+@media (max-width: 600px) {
+    .alvin13 .dossier-titre {
+        font-size: 27px;
+        letter-spacing: 2px;
+    }
+
+    .alvin13 section {
+        padding: 12px;
+    }
+
+    .alvin13 blockquote {
+        font-size: 17px;
+@font-face {
+    font-family: 'Creepster';
+    src: url('Creepster-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 2. On applique la classe */
+.texte-etrange {
+    font-family: 'Creepster', Arial, sans-serif !important;
+    font-size: 2rem;
+    color: #FF3333;
+}
+/* ==========================================================================
+   BARRE RECTANGULAIRE AUX COINS ARRONDIS EN DÉGRADÉ (VERSION GRANDE)
+   ========================================================================== */
+.zone-recherche {
+    max-width: 850px;       /* AUGMENTÉ : La barre passe de 600px à 850px de large */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.barre-recherche {
+    width: 100%;
+    color: #e0e0e0;
+    padding: 18px 25px;     /* AUGMENTÉ : Plus d'espace en haut et en bas (18px au lieu de 14px) */
+    font-size: 20px;        /* AUGMENTÉ : Le texte écrit est plus grand (20px au lieu de 16px) */
+    font-weight: bold;
+    outline: none;
+    box-sizing: border-box;
+
+    /* On force l'arrondi léger des 4 coins */
+    border-radius: 10px !important; 
+
+    /* On crée une bordure transparente pour laisser passer le fond */
+    border: 4px solid transparent !important; /* AUGMENTÉ : Bordure un peu plus épaisse (4px au lieu de 3px) */
+
+    /* Superposition du fond noir et du dégradé Violet -> Orange -> Jaune */
+    background: 
+        linear-gradient(#0b0b0b, #0b0b0b) padding-box, 
+        linear-gradient(135deg, #8a2be2, #ff5722, #ffd700) border-box !important;
+    
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Effet d'illumination au clic (Focus) */
+.barre-recherche:focus {
+    background: 
+        linear-gradient(#000000, #000000) padding-box, 
+        linear-gradient(135deg, #ffd700, #ff5722, #8a2be2) border-box !important;
+    box-shadow: 0 0 30px rgba(255, 87, 34, 0.6);
+}
+
+/* Couleur du texte d'aide */
+.barre-recherche::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+

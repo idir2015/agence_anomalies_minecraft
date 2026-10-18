@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>A.A.M Agence Anomalies Minecraft </title>
+  <link rel="icon" type="image/png" href="AAMlogo.png">
+</head>
+<body>
+
+  <header class="gros-bandeau">
+    <a href="index.html" class="title-link">
+      <h1 class="bandera">
+        <img src="AAMlogo.png" alt="Logo de l'A.A.M" class="logo-aam">
+        <u>A.A.M</u> <i>(Agence des Anomalies Minecraft)</i>
+      </h1>
+    </a>
+  </header>
+
+
+
+
+  <h1><u>A.A.M</u>  <i>(Agence des Anomalies  Minecraft)</i></h1>
+  <p>Découvrez les histoires les plus mystérieuses du web, entre bugs réels et légendes urbaines.</p>
+  
+<div class="zone-recherche" style="max-width: 850px; margin: 40px auto; padding: 0 20px;">
+    <form onsubmit="event.preventDefault();">
+        <input type="text" 
+               id="monInputRecherche" 
+               oninput="filtrerArchives()" 
+               placeholder="🔍 Rechercher (Herobrine, Alvin13...)" 
+               style="width: 100%; color: #e0e0e0; padding: 18px 25px; font-size: 20px; font-weight: bold; outline: none; box-sizing: border-box; border-radius: 10px !important; border: 4px solid transparent !important; background: linear-gradient(#0b0b0b, #0b0b0b) padding-box, linear-gradient(135deg, #8a2be2, #ff5722, #ffd700) border-box !important; box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);">
+    </form>
+</div>
+
+</div>  <h1> <a href="temoignages.html" class="titl-link"> Témoignages...</a> </h1>
+  <h1> <a href="herobrine.html" class="titl-link"> L'origine d'Herobrine : Le bug du Faux Joueur</a> </h1>
+  <h1> <a href="seed0.html" class="titl-link"> La Seed 0 et les mondes en décomposition</a> </h1>
+  <h1> <a href="chunkerror.html" class="titl-link"> Les Chunk Errors et le vide absolu</a> </h1>
+  <h1> <a href="sondsecret.html" class="titl-link"> Les secrets cachés dans le son</a> </h1>
+  <h1> <a href="alvin13.html" class="titl-link"> l'histoire <strong>fictive</strong> d'Alvin13</a> </h1>
+  <h1> <a href="ghostvillage.html" class="titl-link"> Le bug des villages fantômes</a> </h1>
+  <h1> <a href="déformation.html" class="titl-link"> Le Glitch des Modèles Déformés et du creeper</a> </h1>
+  <h1> <a href="bugconnu.html" class="titl-link"> Les Défaillances techniques les plus connues de Minecraft</a> </h1>
+  <h1> <a href="specialsobjects.html" class="titl-link"> Blocs secrets et Glitch de gravité</a> </h1>
+
+
+<!-- Ce message s'affichera uniquement s'il n'y a aucun résultat -->
+<div id="alerte-aucun-resultat" style="display: none; max-width: 600px; margin: 30px auto; padding: 20px; background-color: #2a0909; border: 2px dashed #ff4a4a; border-radius: 8px; text-align: center; box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);">
+    
+    <!-- Ajout de la classe "classe-alerte" ici pour bloquer le script -->
+    <h3 class="classe-alerte" style="color: #ff4a4a; margin: 0 0 10px 0; text-transform: uppercase; letter-spacing: 1px; font-size: 20px;">
+        ⚠️ [ ATTENTION ] — ARCHIVE INTROUVABLE
+    </h3>
+    
+    <p style="color: #ff7777; margin: 0; font-size: 15px; font-weight: bold;">
+        Aucun dossier ne correspond à votre recherche dans la base de données de l'A.A.M. Vérifiez l'orthographe ou le code de l'anomalie.
+    </p>
+    
+</div>
+
+
+
+
+
+
+<script>
+function filtrerArchives() {
+    // 1. Récupérer la recherche de l'utilisateur
+    let saisie = document.getElementById('monInputRecherche').value.toLowerCase();
+    
+    // 2. Cibler tous les titres d'histoires
+    let titres = document.querySelectorAll('h1, h2, h3');
+    
+    // 3. Récupérer le bloc d'alerte HTML
+    let messageAlerte = document.getElementById('alerte-aucun-resultat');
+
+    let compteurResultats = 0;
+
+    // 4. Boucler sur chaque titre
+    titres.forEach(function(titre) {
+        // SÉCURITÉ : On ignore le gros bandeau A.A.M ET le titre de l'alerte pour ne pas les masquer
+        if (titre.classList.contains('bandera') || titre.classList.contains('classe-alerte')) return;
+
+        let texteTitre = titre.textContent.toLowerCase();
+        let paragrapheSuivant = titre.nextElementSibling;
+        let texteParagraphe = paragrapheSuivant ? paragrapheSuivant.textContent.toLowerCase() : "";
+        
+        // Si la recherche correspond
+        if (texteTitre.includes(saisie) || texteParagraphe.includes(saisie)) {
+            titre.style.display = "block"; 
+            if (paragrapheSuivant) paragrapheSuivant.style.display = "block"; 
+            compteurResultats++; 
+        } else {
+            titre.style.display = "none"; 
+            if (paragrapheSuivant) paragrapheSuivant.style.display = "none"; 
+        }
+    });
+
+    // 5. GESTION DE L'AFFICHAGE DE L'ALERTE
+    if (compteurResultats === 0) {
+        messageAlerte.style.display = "block"; 
+    } else {
+        messageAlerte.style.display = "none";  
+    }
+}
+</script>
+      
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>A.A.M specialsobjects</title>
+  <link rel="icon" type="image/png" href="AAMlogo.png">
+<style>
+    /* ==========================================================================
+       EFFET DE GRILLE EN DÉGRADÉ VIOLET & JAUNE POUR LE TABLEAU
+       ========================================================================== */
+    
+    /* Le conteneur qui gère le défilement et l'effet de grille en arrière-plan */
+    .table-responsive {
+        max-height: 500px; 
+        overflow-y: auto;  
+        border: 2px solid #ffcc33; /* Bordure jaune électrique */
+        border-radius: 6px;
+        position: relative;
+
+        /* CREATION DE LA GRILLE MULTICOLORE :
+           1. Un voile noir transparent (0.85) pour pouvoir lire le texte facilement.
+           2. Les lignes verticales de la grille (carrés de 25px).
+           3. Les lignes horizontales de la grille.
+           4. Le grand dégradé de fond qui colore les lignes du Violet au Jaune. */
+        background: 
+            linear-gradient(rgba(11, 11, 11, 0.85), rgba(11, 11, 11, 0.85)),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom right, #8a2be2, #ffcc33);
+        
+        background-size: 100% 100%, 25px 25px, 25px 25px, 100% 100%;
+        box-shadow: 0 0 20px rgba(138, 43, 226, 0.35); /* Lueur violette externe */
+    }
+    
+    /* Rendre la structure interne transparente pour laisser briller la grille */
+    .aam-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        background: transparent;
+    }
+    
+    /* Les cases reçoivent un fond sombre translucide pour bien faire ressortir le texte */
+    .aam-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(138, 43, 226, 0.2); /* Lignes de séparation violettes */
+        background-color: rgba(15, 15, 15, 0.45);
+        color: #cccccc;
+        vertical-align: middle;
+    }
+    
+    /* Fixer les entêtes en haut pendant le défilement (Scroll) */
+    .aam-table th {
+        position: sticky;
+        top: 0;
+        background-color: #160424; /* Fond violet très sombre opaque pour bloquer la transparence */
+        color: #ffcc33;
+        border-bottom: 2px solid #ffcc33;
+        padding: 14px;
+        z-index: 2;
+    }
+
+    /* Effet visuel au passage de la souris */
+    .aam-table tbody tr:hover td {
+        background-color: rgba(138, 43, 226, 0.25); /* Surlignage violet brillant */
+        color: #ffffff;
+        transition: background-color 0.15s ease-in-out;
+    }
+</style>
+</head>
+<body>
+
+    <header class="gros-bandeau">
+    <a href="index.html" class="title-link">
+      <h1 class="bandera">
+        <img src="AAMlogo.png" alt="Logo de l'A.A.M" class="logo-aam">
+        <u>A.A.M</u> <i>(Agence des Anomalies Minecraft)</i>
+      </h1>
+    </a>
+  </header>
+
+  <h1> <a href="index.html" class="retour-link"> Retour↩️</a> </h1>
+  
+  
+        <!-- SECTION : LES CHUNK ERRORS : LES TROUS DU MONDE -->
+    <section>
+      <h2>Blocs secrets et glitch de gravité</h2>
+      
+    <section>
+        <h2>01 — Le Phénomène de Transmutation (Falling Block)</h2>
+        <p>Dans Minecraft, le moteur gère le sable, le gravier et les enclumes en les transformant temporairement d'un bloc fixe en une entité physique mobile appelée <code>falling_block</code>.</p>
+        <p>En exploitant des machines à pistons ultra-rapides cadencées à l'aide de fils de déclenchement ou de portails du Nether, les joueurs peuvent surcharger l'actualisation des ticks du serveur. Cette désynchronisation force l'entité en chute à écraser l'identifiant (ID) du bloc situé juste en dessous d'elle au moment précis de l'impact.Ce qu'il le remplace par un autre ID aléatoire.</p>
+        <blockquote>
+            <strong>Rapport d'infraction :</strong> Ce glitch physique permet de générer sous forme d'objets récupérables dans l'inventaire en Survie des éléments censés être totalement inaccessibles sans triche.
+        </blockquote>
+    </section>
+
+    <!-- Les objets "Hackés" via ce bug -->
+    <section>
+        <h2>02 — Spécimens Obtenus illégalement (Illegal Items)</h2>
+        <p>Grâce à ce contournement des lois physiques de la gravité, des blocs normalement restreints aux opérateurs du mode Créatif ou aux blocs de commande se matérialisent de force :</p>
+        
+        <div class="aam-legende-box">
+            <h3>Guide de décryptage des statuts (Colonne 5) :</h3>
+            <ul>
+                <li><span class="status-tag exclusif-java">Exclusif Java</span> = Bloqué sur Java. Ce bloc dépend du code PC. Message d'erreur rouge sur console/mobile.</li>
+                <li><span class="status-tag identique">Identique</span> = Ça fonctionne partout. Même nom et mêmes effets sur PC, consoles et téléphones.</li>
+                <li><span class="status-tag changement-id">Changement d'ID</span> = Le nom change. Le bloc existe partout, mais son nom s'écrit différemment sur Bedrock.</li>
+                <li><span class="status-tag exclusif-be">Exclusif Bedrock</span> = Bloqué sur Console/Mobile. Relique introuvable sur la version PC Java standard.</li>
+            </ul>
+        </div>
+
+        <div class="zone-recherche">
+            <input type="text" id="aamSearch" class="barre-recherche" placeholder="Rechercher une objet secret..." onkeyup="filtrerDossiers()">
+        </div>
+
+        <div class="table-responsive">
+            <table class="aam-table">
+                <thead>
+                    <tr>
+                        <th style="width: 8%;">ID</th>
+                        <th style="width: 25%;">Nom de l'Élément (Java)</th>
+                        <th style="width: 32%;">Commande Source (Java)</th>
+                        <th style="width: 15%;">Classification</th>
+                        <th style="width: 20%;">Statut / Précisions Bedrock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- !!! COUPE ICI !!! DEBUT DES LIGNES DU TABLEAU -->
+                    
+                    <!-- LES 100 LIGNES VONT VENIR S'INSERER ICI A L'ETAPE 2 -->
+                    <tr><td class="indice">#001</td><td><strong>Bâton de Débogage</strong></td><td><code>/give @s debug_stick</code></td><td>Outil Dév</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Inexistant sur Bedrock.</td></tr>
+<tr><td class="indice">#002</td><td><strong>Bloc de Barrière</strong></td><td><code>/give @s barrier</code></td><td>Collision</td><td><span class="status-tag identique">Identique</span> Commande identique.</td></tr>
+<tr><td class="indice">#003</td><td><strong>Vide de Structure</strong></td><td><code>/give @s structure_void</code></td><td>Collision</td><td><span class="status-tag identique">Identique</span> Bloque juste les fluides.</td></tr>
+<tr><td class="indice">#004</td><td><strong>Air des Cavernes</strong></td><td><code>/setblock ~ ~ ~ cave_air</code></td><td>Technique</td><td><span class="status-tag changement-id">Changement d'ID</span> Devient air normal.</td></tr>
+<tr><td class="indice">#005</td><td><strong>Air du Vide</strong></td><td><code>/setblock ~ ~ ~ void_air</code></td><td>Technique</td><td><span class="status-tag changement-id">Changement d'ID</span> Devient air normal.</td></tr>
+<tr><td class="indice">#006</td><td><strong>Piston Mobile (Block 36)</strong></td><td><code>/setblock ~ ~ ~ moving_piston</code></td><td>Technique</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Non géré sur Bedrock.</td></tr>
+<tr><td class="indice">#007</td><td><strong>Potion de Chance</strong></td><td><code>/give @s potion{Potion:"minecraft:luck"}</code></td><td>Consommable</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Effet absent du code BE.</td></tr>
+<tr><td class="indice">#008</td><td><strong>Potion de Malchance</strong></td><td><code>/give @s potion{Potion:"minecraft:bad_luck"}</code></td><td>Consommable</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Effet absent du code BE.</td></tr>
+<tr><td class="indice">#009</td><td><strong>Potion Introuvable</strong></td><td><code>/give @s uncraftable_potion</code></td><td>Consommable</td><td><span class="status-tag changement-id">Changement d'ID</span> Devient fiole d'eau simple.</td></tr>
+<tr><td class="indice">#010</td><td><strong>Soupe Suspecte</strong></td><td><code>/give @s suspicious_stew</code></td><td>Consommable</td><td><span class="status-tag identique">Identique</span> Présente sous le même ID.</td></tr>
+<tr><td class="indice">#011</td><td><strong>Wagonnet à Spawner</strong></td><td><code>/summon spawner_minecart</code></td><td>Entité</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Commande rejetée par le jeu.</td></tr>
+<tr><td class="indice">#012</td><td><strong>Wagonnet à Commande</strong></td><td><code>/give @s command_block_minecart</code></td><td>Entité</td><td><span class="status-tag identique">Identique</span> Fonctionne à l'identique.</td></tr>
+<tr><td class="indice">#013</td><td><strong>Bloc de Puzzle (Jigsaw)</strong></td><td><code>/give @s jigsaw</code></td><td>Génération</td><td><span class="status-tag identique">Identique</span> Même ID fonctionnel.</td></tr>
+<tr><td class="indice">#014</td><td><strong>Bloc de Structure</strong></td><td><code>/give @s structure_block</code></td><td>Outil Dév</td><td><span class="status-tag identique">Identique</span> Même bloc, graphismes différents.</td></tr>
+<tr><td class="indice">#015</td><td><strong>Bloc de Commande Standard</strong></td><td><code>/give @s command_block</code></td><td>Script</td><td><span class="status-tag identique">Identique</span> Commande identique.</td></tr>
+<tr><td class="indice">#016</td><td><strong>Bloc de Commande Chaîne</strong></td><td><code>/give @s chain_command_block</code></td><td>Script</td><td><span class="status-tag identique">Identique</span> Commande identique.</td></tr>
+<tr><td class="indice">#017</td><td><strong>Bloc de Commande Répét</strong></td><td><code>/give @s repeating_command_block</code></td><td>Script</td><td><span class="status-tag identique">Identique</span> Commande identique.</td></tr>
+<tr><td class="indice">#018</td><td><strong>Spawner de Monstres</strong></td><td><code>/give @s spawner</code></td><td>Génération</td><td><span class="status-tag identique">Identique</span> Génère des cochons par défaut.</td></tr>
+<tr><td class="indice">#019</td><td><strong>Spawner des Épreuves</strong></td><td><code>/give @s trial_spawner</code></td><td>Génération</td><td><span class="status-tag identique">Identique</span> Ajouté en version 1.21.</td></tr>
+<tr><td class="indice">#020</td><td><strong>Spawner Sinistre</strong></td><td><code>/setblock ~ ~ ~ trial_spawner</code></td><td>Génération</td><td><span class="status-tag identique">Identique</span> Activé par variable interne.</td></tr>
+<tr><td class="indice">#021</td><td><strong>Dalle de Chêne Pétrifiée</strong></td><td><code>/give @s petrified_oak_slab</code></td><td>Résiduel</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Non implémentée sur Bedrock.</td></tr>
+<tr><td class="indice">#022</td><td><strong>Portail du Nether Brut</strong></td><td><code>/setblock ~ ~ ~ nether_portal</code></td><td>Portail</td><td><span class="status-tag changement-id">Changement d'ID</span> Sur Bedrock : portal.</td></tr>
+<tr><td class="indice">#023</td><td><strong>Carré de Portail de l'End</strong></td><td><code>/setblock ~ ~ ~ end_portal</code></td><td>Portail</td><td><span class="status-tag identique">Identique</span> Bloc de téléportation brut.</td></tr>
+<tr><td class="indice">#024</td><td><strong>Passerelle de l'End</strong></td><td><code>/setblock ~ ~ ~ end_gateway</code></td><td>Portail</td><td><span class="status-tag identique">Identique</span> Faisceau laser jaune/violet.</td></tr>
+<tr><td class="indice">#025</td><td><strong>Tête de Joueur Custom</strong></td><td><code>/give @s player_head</code></td><td>Déco</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Les skins NBT échouent sur BE.</td></tr>
+<tr><td class="indice">#026</td><td><strong>Tête de Dragon Élastique</strong></td><td><code>/give @s dragon_head</code></td><td>Déco</td><td><span class="status-tag identique">Identique</span> S'anime avec de la Redstone.</td></tr>
+<tr><td class="indice">#027</td><td><strong>Bloc de Lumière (15)</strong></td><td><code>/give @s light{level:15}</code></td><td>Éclairage</td><td><span class="status-tag changement-id">Changement d'ID</span> Commande Bedrock : light_block 1 15.</td></tr>
+<tr><td class="indice">#028</td><td><strong>Bloc de Lumière (0)</strong></td><td><code>/give @s light{level:0}</code></td><td>Éclairage</td><td><span class="status-tag changement-id">Changement d'ID</span> Commande Bedrock : light_block 1 0.</td></tr>
+<tr><td class="indice">#029</td><td><strong>Tapis Lumineux Invisible</strong></td><td><code>/setblock ~ ~ ~ light</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Crée un éclat sans cube solide.</td></tr>
+<tr><td class="indice">#030</td><td><strong>Lave Statique Immobile</strong></td><td><code>/setblock ~ ~ ~ lava</code></td><td>Fluide</td><td><span class="status-tag identique">Identique</span> Reste figée dans l'espace.</td></tr>
+<tr><td class="indice">#031</td><td><strong>Eau Statique Immobile</strong></td><td><code>/setblock ~ ~ ~ water</code></td><td>Fluide</td><td><span class="status-tag identique">Identique</span> Reste figée dans l'espace.</td></tr>
+<tr><td class="indice">#032</td><td><strong>Tête de Piston Déployée</strong></td><td><code>/setblock ~ ~ ~ piston_head</code></td><td>Technique</td><td><span class="status-tag changement-id">Changement d'ID</span> Nommé piston_arm_collision.</td></tr>
+<tr><td class="indice">#033</td><td><strong>Tête de Piston Collant</strong></td><td><code>/setblock ~ ~ ~ sticky_piston_head</code></td><td>Technique</td><td><span class="status-tag changement-id">Changement d'ID</span> Nommé sticky_piston_arm_collision.</td></tr>
+<tr><td class="indice">#034</td><td><strong>Fourneau Allumé Fixe</strong></td><td><code>/setblock ~ ~ ~ lit_furnace</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Brûle sans charbon dedans.</td></tr>
+<tr><td class="indice">#035</td><td><strong>Haut Fourneau Allumé</strong></td><td><code>/setblock ~ ~ ~ lit_blast_furnace</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Brûle sans charbon dedans.</td></tr>
+<tr><td class="indice">#036</td><td><strong>Fumoir Allumé Permanent</strong></td><td><code>/setblock ~ ~ ~ lit_smoker</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Brûle sans charbon dedans.</td></tr>
+<tr><td class="indice">#037</td><td><strong>Minerai de Redstone Actif</strong></td><td><code>/setblock ~ ~ ~ glowing_redstone_ore</code></td><td>Éclairage</td><td><span class="status-tag changement-id">Changement d'ID</span> Nommé lit_redstone_ore sur BE.</td></tr>
+<tr><td class="indice">#038</td><td><strong>Minerai Ardoise Lumineux</strong></td><td><code>/setblock ~ ~ ~ lit_deepslate_redstone_ore</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Même ID et effet fixe.</td></tr>
+<tr><td class="indice">#039</td><td><strong>Lampe Redstone Allumée</strong></td><td><code>/setblock ~ ~ ~ lit_redstone_lamp</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Allumée sans courant.</td></tr>
+<tr><td class="indice">#040</td><td><strong>Torche Redstone Éteinte</strong></td><td><code>/setblock ~ ~ ~ unlit_redstone_torch</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Texture de torche grillée.</td></tr>
+<tr><td class="indice">#041</td><td><strong>Répéteur Activé Fixe</strong></td><td><code>/setblock ~ ~ ~ powered_repeater</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Signal électrique infini.</td></tr>
+<tr><td class="indice">#042</td><td><strong>Comparateur Activé Fixe</strong></td><td><code>/setblock ~ ~ ~ powered_comparator</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Signal électrique infini.</td></tr>
+<tr><td class="indice">#043</td><td><strong>Terre Labourée Hydratée</strong></td><td><code>/setblock ~ ~ ~ farmland[moisture=7]</code></td><td>Agriculture</td><td><span class="status-tag changement-id">Changement d'ID</span> Nommé hydrated_farmland sur BE.</td></tr>
+<tr><td class="indice">#044</td><td><strong>Tige de Citrouille Prête</strong></td><td><code>/setblock ~ ~ ~ pumpkin_stem[age=7]</code></td><td>Agriculture</td><td><span class="status-tag identique">Identique</span> Géré via les états du bloc.</td></tr>
+<tr><td class="indice">#045</td><td><strong>Tige de Melon Prête</strong></td><td><code>/setblock ~ ~ ~ melon_stem[age=7]</code></td><td>Agriculture</td><td><span class="status-tag identique">Identique</span> Âge forcé au maximum (7).</td></tr>
+<tr><td class="indice">#046</td><td><strong>Flèche d'Eau Neutre</strong></td><td><code>/give @s tipped_arrow</code></td><td>Projectile</td><td><span class="status-tag identique">Identique</span> Flèche sans aucun effet magique.</td></tr>
+<tr><td class="indice">#047</td><td><strong>Œuf d'Ender Dragon (Spawn)</strong></td><td><code>/give @s ender_dragon_spawn_egg</code></td><td>Entité</td><td><span class="status-tag identique">Identique</span> Invoque le boss final directement.</td></tr>
+<tr><td class="indice">#048</td><td><strong>Œuf de Wither (Spawn)</strong></td><td><code>/give @s wither_spawn_egg</code></td><td>Entité</td><td><span class="status-tag identique">Identique</span> Invoque le boss secondaire directement.</td></tr>
+<tr><td class="indice">#049</td><td><strong>Le Zombie Géant</strong></td><td><code>/summon giant</code></td><td>Entité</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Le code n'existe pas sur BE.</td></tr>
+<tr><td class="indice">#050</td><td><strong>L'Illusionneur</strong></td><td><code>/summon illusioner</code></td><td>Entité</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Non disponible sur console.</td></tr>
+<tr><td class="indice">#051</td><td><strong>Le Lapin Tueur</strong></td><td><code>/summon rabbit {RabbitType:99}</code></td><td>Entité</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Ce type agressif est absent de BE.</td></tr>
+<tr><td class="indice">#052</td><td><strong>Bloc d'Affichage d'Entité</strong></td><td><code>/summon block_display</code></td><td>Outil Dév</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Affichages 3D absents de BE.</td></tr>
+<tr><td class="indice">#053</td><td><strong>Bloc d'Affichage d'Item</strong></td><td><code>/summon item_display</code></td><td>Outil Dév</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Affichages 3D absents de BE.</td></tr>
+<tr><td class="indice">#054</td><td><strong>Bloc d'Affichage Texte</strong></td><td><code>/summon text_display</code></td><td>Outil Dév</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Pas d'écriture flottante pure.</td></tr>
+<tr><td class="indice">#055</td><td><strong>Boîte d'Interaction Pure</strong></td><td><code>/summon interaction</code></td><td>Outil Dév</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Collisionneur de clics absent.</td></tr>
+<tr><td class="indice">#056</td><td><strong>Entité Marqueur (Marker)</strong></td><td><code>/summon marker</code></td><td>Outil Dév</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Point invisible NBT indisponible.</td></tr>
+<tr><td class="indice">#057</td><td><strong>Cube Missing Texture</strong></td><td><code>/give @s structure_block{mode:"LOAD"}</code></td><td>Erreur</td><td><span class="status-tag identique">Identique</span> Damier de secours noir et violet.</td></tr>
+<tr><td class="indice">#058</td><td><strong>Glace Givrée Semelles</strong></td><td><code>/setblock ~ ~ ~ frosted_ice</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Glace temporaire cassable.</td></tr>
+<tr><td class="indice">#059</td><td><strong>Glace Compacte Fixe</strong></td><td><code>/setblock ~ ~ ~ packed_ice</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Bloc de glace stable classique.</td></tr>
+<tr><td class="indice">#060</td><td><strong>Feu d'Âme Flottant</strong></td><td><code>/setblock ~ ~ ~ soul_fire</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Flamme bleue stable suspendue.</td></tr>
+<tr><td class="indice">#061</td><td><strong>Feu Classique Flottant</strong></td><td><code>/setblock ~ ~ ~ fire</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Flamme orange stable suspendue.</td></tr>
+<tr><td class="indice">#062</td><td><strong>Double Dalle Pierre Lisse</strong></td><td><code>/setblock ~ ~ ~ smooth_stone_slab</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Texture lisse sur 6 faces.</td></tr>
+<tr><td class="indice">#063</td><td><strong>Double Dalle Grès Lisse</strong></td><td><code>/setblock ~ ~ ~ smooth_sandstone_slab</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Texture grès sur 6 faces.</td></tr>
+<tr><td class="indice">#064</td><td><strong>Double Dalle Quartz Lisse</strong></td><td><code>/setblock ~ ~ ~ smooth_quartz_slab</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Texture quartz sur 6 faces.</td></tr>
+<tr><td class="indice">#065</td><td><strong>Détecteur Nuit Activé</strong></td><td><code>/setblock ~ ~ ~ inverted_daylight_detector</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Signal nocturne permanent et fixe.</td></tr>
+<tr><td class="indice">#066</td><td><strong>Cadre Portail End Rempli</strong></td><td><code>/setblock ~ ~ ~ end_portal_frame[eye=true]</code></td><td>Portail</td><td><span class="status-tag identique">Identique</span> Contient déjà l'œil inséré.</td></tr>
+<tr><td class="indice">#067</td><td><strong>Ancre Réapparition Max</strong></td><td><code>/setblock ~ ~ ~ respawn_anchor[charges=4]</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Chargée au maximum à 4 points.</td></tr>
+<tr><td class="indice">#068</td><td><strong>Bulles Ascendantes Seules</strong></td><td><code>/setblock ~ ~ ~ bubble_column[drag=true]</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Eau propulsive sans sable des âmes.</td></tr>
+<tr><td class="indice">#069</td><td><strong>Bulles Aspirantes Seules</strong></td><td><code>/setblock ~ ~ ~ bubble_column[drag=false]</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Eau aspirante sans bloc de magma.</td></tr>
+<tr><td class="indice">#070</td><td><strong>Barrique Ouverte Fixe</strong></td><td><code>/setblock ~ ~ ~ barrel[open=true]</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Le tonneau reste ouvert visuellement.</td></tr>
+<tr><td class="indice">#071</td><td><strong>Cadre d'Objet Invisible</strong></td><td><code>/give @s item_frame{Invisible:1b}</code></td><td>Déco</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Le tag d'invisibilité ne marche pas.</td></tr>
+<tr><td class="indice">#072</td><td><strong>Cadre Lumineux Invisible</strong></td><td><code>/give @s glow_item_frame{Invisible:1b}</code></td><td>Déco</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Le tag d'invisibilité ne marche pas.</td></tr>
+<tr><td class="indice">#073</td><td><strong>Cierge de l'End Statique</strong></td><td><code>/setblock ~ ~ ~ end_rod</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Tige lumineuse classique.</td></tr>
+<tr><td class="indice">#074</td><td><strong>Éponge Mouillée Fixe</strong></td><td><code>/setblock ~ ~ ~ wet_sponge</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Éponge pleine d'eau par défaut.</td></tr>
+<tr><td class="indice">#075</td><td><strong>Panneau Fixé au Mur</strong></td><td><code>/setblock ~ ~ ~ oak_wall_sign</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Version murale sans sa tige.</td></tr>
+<tr><td class="indice">#076</td><td><strong>Panneau Planté au Sol</strong></td><td><code>/setblock ~ ~ ~ oak_sign</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Version sur poteau.</td></tr>
+<tr><td class="indice">#077</td><td><strong>Lichen Lumineux Fixe</strong></td><td><code>/setblock ~ ~ ~ glow_lichen</code></td><td>Éclairage</td><td><span class="status-tag identique">Identique</span> Plante lumineuse plaquée au bloc.</td></tr>
+<tr><td class="indice">#078</td><td><strong>Souche Champignon Brun</strong></td><td><code>/setblock ~ ~ ~ brown_mushroom_block</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Bloc complet de texture d'écorce.</td></tr>
+<tr><td class="indice">#079</td><td><strong>Souche Champignon Rouge</strong></td><td><code>/setblock ~ ~ ~ red_mushroom_block</code></td><td>Technique</td><td><span class="status-tag identique">Identique</span> Bloc complet de texture d'écorce.</td></tr>
+<tr><td class="indice">#080</td><td><strong>Racine Suspendue Fixe</strong></td><td><code>/setblock ~ ~ ~ hanging_roots</code></td><td>Déco</td><td><span class="status-tag identique">Identique</span> Végétal sous les plafonds.</td></tr>
+<tr><td class="indice">#081</td><td>*Cœur Réacteur Nether*</td><td>Inexistant sur Java</td><td>Relique</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Bloc bleu/jaune des anciens téléphones.</td></tr>
+<tr><td class="indice">#082</td><td>*Appareil Photo (Camera)*</td><td>Inexistant sur Java</td><td>Relique</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Bloc fixe pour les captures d'écran.</td></tr>
+<tr><td class="indice">#083</td><td>*Tableau Noir Géant*</td><td>Inexistant sur Java</td><td>Éducation</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Ardoise pour écrire de longs textes.</td></tr>
+<tr><td class="indice">#084</td><td>*Bloc d'Autorisation (Allow)*</td><td>Inexistant sur Java</td><td>Aventure</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Commande Bedrock : /give @p allow.</td></tr>
+<tr><td class="indice">#085</td><td>*Bloc de Refus (Deny)*</td><td>Inexistant sur Java</td><td>Aventure</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Commande Bedrock : /give @p deny.</td></tr>
+<tr><td class="indice">#086</td><td>*Bloc de Frontière (Border)*</td><td>Inexistant sur Java</td><td>Sécurité</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Mur invisible absolu de haut en bas.</td></tr>
+<tr><td class="indice">#087</td><td>*Terre Info Update*</td><td>Inexistant sur Java</td><td>Erreur</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Bloc vert fluo indiquant une panne.</td></tr>
+<tr><td class="indice">#088</td><td>*Roche Mère Invisible*</td><td>Inexistant sur Java</td><td>Sécurité</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Mur incassable des anciennes cartes PE.</td></tr>
+<tr><td class="indice">#089</td><td>*L'Agent (Robot)*</td><td>Inexistant sur Java</td><td>Entité</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Robot programmable (Education).</td></tr>
+<tr><td class="indice">#090</td><td>*PNJ Éditable (NPC)*</td><td>Inexistant sur Java</td><td>Entité</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> Humain avec dialogues configurables.</td></tr>
+<tr><td class="indice">#091</td><td>*Enclume Obsolète*</td><td>Inexistant sur Java</td><td>Résiduel</td><td><span class="status-tag exclusif-be">Exclusif Bedrock</span> S'obtient via anvil 1 12 sur console.</td></tr>
+<tr><td class="indice">#092</td><td><strong>Bloc Énigme 1er Avril</strong></td><td>Snapshot 20w14infinite</td><td>Événement</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Contenu temporaire absent sur BE.</td></tr>
+<tr><td class="indice">#093</td><td><strong>Potion Super Bonheur</strong></td><td>Snapshot 24w14a</td><td>Événement</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Flacon gag absent de Bedrock.</td></tr>
+<tr><td class="indice">#094</td><td><strong>Pousse d'Arbre Artifice</strong></td><td>Snapshot 20w14infinite</td><td>Événement</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Végétal éphémère absent de Bedrock.</td></tr>
+<tr><td class="indice">#095</td><td><strong>Dimension Matrix (Seed 0)</strong></td><td>Faille mathématique</td><td>Génération</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Faille de relief en croix absente.</td></tr>
+<tr><td class="indice">#096</td><td><strong>Cuivre Ciré Oxydé Fixe</strong></td><td>/setblock ~ ~ ~ waxed_oxidized_copper</td><td>Déco</td><td><span class="status-tag identique">Identique</span> Bloc métallique oxydé et bloqué.</td></tr>
+<tr><td class="indice">#097</td><td><strong>Éponge Sèche Instantanée</strong></td><td>/setblock ~ ~ ~ sponge</td><td>Technique</td><td><span class="status-tag identique">Identique</span> Bloc d'éponge classique absorbant.</td></tr>
+<tr><td class="indice">#098</td><td><strong>Cadre Portail End Vide</strong></td><td>/setblock ~ ~ ~ end_portal_frame[eye=false]</td><td>Portail</td><td><span class="status-tag identique">Identique</span> Socle vide sans son œil magique.</td></tr>
+<tr><td class="indice">#099</td><td><strong>Bloc Brume Nether FOG</strong></td><td>Bug de particules</td><td>Erreur</td><td><span class="status-tag identique">Identique</span> Dysfonctionnement d'affichage.</td></tr>
+<tr><td class="indice">#100</td><td><strong>Mode Débogage Global</strong></td><td>ALT en menu création</td><td>Matrice</td><td><span class="status-tag exclusif-java">Exclusif Java</span> Grille multicolore absente sur BE.</td></tr>
+
+                    <!-- !!! COUPE ICI !!! FIN DES LIGNES DU TABLEAU -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+    function filtrerDossiers() {
+        let input = document.getElementById('aamSearch').value.toLowerCase();
+        let rows = document.querySelectorAll('.aam-table tbody tr');
+        rows.forEach(row => {
+            let text = row.textContent.toLowerCase();
+            if (text.includes(input)) { row.style.display = ""; } 
+            else { row.style.display = "none"; }
+        });
+    }
+    </script>
+</body>
+</html>

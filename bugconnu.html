@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>A.A.M bugs techniques</title>
+  <link rel="icon" type="image/png" href="AAMlogo.png">
+  <style>
+        /* Style pour intégrer la vidéo YouTube avec le design de l'Agence */
+      .video-container {
+            max-width: 700px;
+            margin: 30px auto;
+            border-radius: 10px;
+            border: 3px solid #ff4a4a;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+      }
+      .video-container iframe {
+            width: 100%;
+            height: 100%;
+      }
+      .italic {
+            font-style: italic;
+            color: #aaa;
+      }
+  </style>
+</head>
+<body>
+
+    <header class="gros-bandeau">
+    <a href="index.html" class="title-link">
+      <h1 class="bandera">
+        <img src="AAMlogo.png" alt="Logo de l'A.A.M" class="logo-aam">
+        <u>A.A.M</u> <i>(Agence des Anomalies Minecraft)</i>
+      </h1>
+    </a>
+  </header>
+
+  <h1> <a href="index.html" class="retour-link"> Retour↩️</a> </h1>
+    <!-- Titre du Dossier -->
+    <h1 class="dossier-titre">Les Défaillances techniques les plus connues de Minecraft</h1>
+
+    <div class="warning">
+        ⚠ DOSSIER TECHNIQUE DÉCLASSIFIÉ : ANOMALIES DE PROGRAMMATION ET COMPORTEMENTS IMPRÉVISIBLES ⚠
+    </div>
+
+    <!-- Section 01 : Pièce à conviction vidéo -->
+    <section>
+        <h2>01 — Archive Audiovisuelle Officielle</h2>
+        <p>Les rapports internes des équipes de développement confirment que derrière la structure logique des blocs se cachent parfois des défaillances physiques majeures. Voici l'analyse des incidents enregistrés :</p>
+        
+<div class="video-container">
+    <!-- Suppression de l'iframe inutile, on garde uniquement la balise video -->
+    <video controls width="100%">
+        <source src="Bugsminecraft.mp4" type="video/mp4">
+        Votre navigateur ne supporte pas la lecture de cette vidéo locale.
+    </video>
+</div>
+<p class="legende">Enregistrement audio-visuel récupéré des archives de développement de Mojang.</p>
+
+    </section>
+
+    <!-- Section 02 : Le Poulpe -->
+    <section>
+        <h2>02 — L'Incident du "Poulpe-Volant"</h2>
+        <p>Lors de l'introduction de la première entité aquatique (le Poulpe) par le développeur Jens, Il ne savait pas trop comment faire une créature aquatique </p>
+        <p>Ne sachant pas coder une créature marine de zéro, le programmeur a fait en sorte que son poulpe puisse nager, mais il n'a pas fait en sorte qu'il puisse nager uniquement dans l'eau.</p>
+
+        <p>Par la suite, cette ligne de code ratée a provoqué le bug mythique du « poulpe volant », forçant le modèle à ignorer la gravité de l'eau pour s'élever dans les airs.</p>
+    </section>
+
+  <img src="https://www.minecraft-france.fr/wp-content/uploads/2025/05/bug-poulpe-volant.avif" alt="Un énorme trou de chunk buggé qui s'enfonce dans le vide de Minecraft">
+
+
+    <!-- Section 03 : Les Villageois -->
+    <section>
+        <h2>03 — La Lévitation Nocturne des Villageois</h2>
+        <p>Une anomalie hautement perturbante concernant l'axe de position des villageois endormis a été recensée dans les secteurs habités.</p>
+        <p>Lorsqu'un villageois entrait en collision avec un joueur ou une autre entité alors qu'il était allongé dans son lit, les variables de hauteur se corrompaient instantanément dans la mémoire du jeu.</p>
+        <p>Au lieu de se réveiller au sol, le modèle restait figé en position de sommeil mais <span class="indice">dérivait et s'élevait lentement vers le ciel</span>, traversant l'atmosphère sans aucune explication logique.</p>
+    </section>
+  <img src="https://www.minecraft-france.fr/wp-content/uploads/2025/05/villageois-qui-vol.avif" alt="Un énorme trou de chunk buggé qui s'enfonce dans le vide de Minecraft">
+
+
+    <!-- Section 04 : Les Rails Boosters -->
+    <section>
+        <h2>04 — L'Énergie Cinétique Infinie (Glitch Booster)</h2>
+        <p>Avant l'invention des rails de propulsion dorés (Powered Rails), la communauté exploitait une faille géométrique pour créer des accélérateurs de vitesse extraordinaires.</p>
+        <ul>
+            <li><strong>Le déclencheur :</strong> Placer deux wagonnets (minecarts) sur deux voies parallèles et adjacentes.</li>
+            <li><strong>Le conflit :</strong> Les boîtes de collision (<span class="italic">bounding boxes</span>) des deux modèles se chevauchaient de quelques pixels.</li>
+            <li><strong>La faille :</strong> Pour corriger cette erreur géométrique, le moteur physique repoussait violemment les véhicules, générant une quantité infinie d'énergie cinétique capable de les propulser à des vitesses extrêmes.</li>
+        </ul>
+        <p>Conscient de l'impact de ce bug sur le gameplay, Mojang a corrigé le glitch mais a implémenté une structure officielle pour conserver la mécanique : les rails alimentés.</p>
+    </section>
+
+  <img src="https://fr.minecraft.wiki/images/thumb/Auto_Startbooster.jpg/700px-Auto_Startbooster.jpg?54e58" alt="Un énorme trou de chunk buggé qui s'enfonce dans le vide de Minecraft">
+
+    <!-- Section 05 : Le Bug 2025 -->
+    <section>
+        <h2>05 — La Faille de Collision MC-2025</h2>
+        <p>Répertorié sous le ticket historique <code>MC-2025</code>, ce bug très ancien permettait aux monstres et animaux de glitcher à travers les murs solides ou les clôtures de leurs enclos lors du chargement des morceaux du monde (chunks).</p>
+        <p>Ce dossier s'est refermé sur une anecdote légendaire de la programmation :</p>
+
+  <img src="https://bugs.mojang.com/api/issue-attachment-get?attachmentId=10439" alt="Un énorme trou de chunk buggé qui s'enfonce dans le vide de Minecraft">
+
+        <blockquote>
+            « Le correctif final a été injecté par le développeur Panda4994 le 1er janvier 2025 à minuit pile. Il a résolu ce bug historique directement depuis son téléphone portable en regardant les feux d'artifice du Nouvel An. »
+        </blockquote>
+    </section>
+
+
+</body>
+
+</html>
