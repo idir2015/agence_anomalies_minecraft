@@ -154,9 +154,10 @@ h1:hover {
 .bandera{
   font-size: 1.0rem;
   margin: 0;
-  letter-spacing: 2px;
+  letter-spacing: 0,125rem
+;
   text-shadow: 2px 2px 4px #000000; /* Ombre pour que le titre ressorte bien sur l'image */
-  font-size: 50.5px;
+
 }
 .logo-aam {
   width: 4.8rem;           /* Taille adaptée pour ton titre de 50.5px */
